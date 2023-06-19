@@ -1,32 +1,32 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemGeneretor : MonoBehaviour
 {
-    //carPrefab‚ð“ü‚ê‚é
+    //carPrefabã‚’å…¥ã‚Œã‚‹
     public GameObject carPrefab;
-    //coinPrefab‚ð“ü‚ê‚é
+    //coinPrefabã‚’å…¥ã‚Œã‚‹
     public GameObject coinPrefab;
-    //cornPrefab‚ð“ü‚ê‚é
+    //cornPrefabã‚’å…¥ã‚Œã‚‹
     public GameObject cornPrefab;
-    //ƒXƒ^[ƒg’n“_
+    //ã‚¹ã‚¿ãƒ¼ãƒˆåœ°ç‚¹
     private int startPos = 80;
-    //ƒS[ƒ‹’n“_
+    //ã‚´ãƒ¼ãƒ«åœ°ç‚¹
     private int goalPos = 360;
-    //ƒAƒCƒeƒ€‚ðo‚·x•ûŒü‚Ì”ÍˆÍ
+    //ã‚¢ã‚¤ãƒ†ãƒ ã‚’å‡ºã™xæ–¹å‘ã®ç¯„å›²
     private float posRange = 3.4f;
 
-    //unitychan‚ð“ü‚ê‚é
+    //unitychanã‚’å…¥ã‚Œã‚‹
     public GameObject unitychan;
-    //ƒAƒCƒeƒ€‚ð¶¬‚·‚éÅ¬‹——£
+    //ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç”Ÿæˆã™ã‚‹æœ€å°è·é›¢
     public int DistanceitemgeneretorMin = 40;
-    //ƒAƒCƒeƒ€‚ð¶¬‚·‚éÅ‘å‹——£
+    //ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç”Ÿæˆã™ã‚‹æœ€å¤§è·é›¢
     public int DistanceitemgeneretorMax = 50;
-    //ƒAƒCƒeƒ€‚ð¶¬‚·‚éŠÔŠu
-    public int generetioninterval = 15;
-    //ÅŒã‚ÉƒAƒCƒeƒ€‚ð¶¬‚µ‚½ˆÊ’u
+    //ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç”Ÿæˆã™ã‚‹é–“éš”
+    public int generetioninterval = 10;
+    //æœ€å¾Œã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç”Ÿæˆã—ãŸä½ç½®
     public int lastgeneretion = 40;
 
     
@@ -34,7 +34,7 @@ public class ItemGeneretor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //unitychan‚ðŽæ“¾
+        //unitychanã‚’å–å¾—
         this.unitychan = GameObject.Find("unitychan");
 
 
@@ -44,20 +44,20 @@ public class ItemGeneretor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //ã‚¢ã‚¤ãƒ†ãƒ ã‚’unityã¡ã‚ƒã‚“ã®ä½ç½®ã‹ã‚‰40âˆ¼50ï½ã‚‚ç¯„å›²ã§ç”Ÿæˆã—ã€ã‚´ãƒ¼ãƒ«ä»¥ä¸Šã«ã¯ç”Ÿæˆã—ãªã„ã‚ˆã†ã«è¨­å®š
       if((unitychan.transform.position.z + DistanceitemgeneretorMin + DistanceitemgeneretorMax > lastgeneretion) &  (unitychan.transform.position.z + DistanceitemgeneretorMin + DistanceitemgeneretorMax +generetioninterval < goalPos))
         {
-
+            //iã‚’ä½¿ã†ãŸã‚ã«è¨­å®š
             int i = lastgeneretion + generetioninterval;
             lastgeneretion += generetioninterval;
 
 
-            //‚Ç‚ÌƒAƒCƒeƒ€‚ðo‚·‚Ì‚©ƒ‰ƒ“ƒ_ƒ€‚ÉÝ’è
+            //ã©ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å‡ºã™ã®ã‹ãƒ©ãƒ³ãƒ€ãƒ ã«è¨­å®š
             int num = Random.Range(1, 11);
             if (num <= 2)
             {
 
-                //ƒR[ƒ“‚ðxŽ²•ûŒü‚Éˆê’¼ü‚É¶¬
+                //ã‚³ãƒ¼ãƒ³ã‚’xè»¸æ–¹å‘ã«ä¸€ç›´ç·šã«ç”Ÿæˆ
                 for (float j = -1; j <= 1; j += 0.4f)
                 {
                     GameObject cone = Instantiate(cornPrefab);
@@ -68,24 +68,24 @@ public class ItemGeneretor : MonoBehaviour
             else
             {
 
-                //ƒŒ[ƒ“‚²‚Æ‚ÉƒAƒCƒeƒ€‚ð¶¬
+                //ãƒ¬ãƒ¼ãƒ³ã”ã¨ã«ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç”Ÿæˆ
                 for (int j = -1; j <= 1; j++)
                 {
-                    //ƒAƒCƒeƒ€‚ÌŽí—Þ‚ðŒˆ‚ß‚é
+                    //ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡žã‚’æ±ºã‚ã‚‹
                     int item = Random.Range(1, 11);
-                    //ƒAƒCƒeƒ€‚ð’u‚­‚šÀ•W‚ÌƒIƒtƒZƒbƒg‚ðƒ‰ƒ“ƒ_ƒ€‚ÉÝ’è
+                    //ã‚¢ã‚¤ãƒ†ãƒ ã‚’ç½®ãï½šåº§æ¨™ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’ãƒ©ãƒ³ãƒ€ãƒ ã«è¨­å®š
                     int offsetz = Random.Range(-5, 6);
-                    //60%ƒRƒCƒ“‚ð”z’uF30“ŽÔ‚ð”z’uF10“‰½‚à‚È‚µ
+                    //60%ã‚³ã‚¤ãƒ³ã‚’é…ç½®ï¼š30ï¼…è»Šã‚’é…ç½®ï¼š10ï¼…ä½•ã‚‚ãªã—
                     if (1 <= item && item <= 6)
                     {
-                        //ƒRƒCƒ“‚ð¶¬
+                        //ã‚³ã‚¤ãƒ³ã‚’ç”Ÿæˆ
                         GameObject coin = Instantiate(coinPrefab);
                         coin.transform.position = new Vector3(posRange * j, coin.transform.position.y, i + offsetz);
 
                     }
                     else if (7 <= item && item <= 9)
                     {
-                        //ŽÔ‚ð¶¬
+                        //è»Šã‚’ç”Ÿæˆ
                         GameObject car = Instantiate(carPrefab);
                         car.transform.position = new Vector3(posRange * j, car.transform.position.y, i + offsetz);
                     }
